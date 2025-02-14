@@ -1,3 +1,4 @@
+package setup;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,9 +7,11 @@ import org.testng.annotations.*;
 import java.time.Duration;
 
 public class Setup {
-    WebDriver driver;
-@BeforeMethod
+    public WebDriver driver;
+
+    @BeforeSuite
     public void setup() {
+
 
      driver = new ChromeDriver();
     driver.manage().window().maximize();
@@ -16,8 +19,9 @@ public class Setup {
     driver.get("https://opensource-demo.orangehrmlive.com/");
     }
 
-    @AfterMethod
+    @AfterSuite
     public void closeBrowser() {
-    driver.quit();
-        }
+
+     driver.quit();
+    }
 }
