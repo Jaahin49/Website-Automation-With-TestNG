@@ -11,12 +11,10 @@ public class Setup {
 
     @BeforeSuite
     public void setup() {
-
-
-     driver = new ChromeDriver();
-    driver.manage().window().maximize();
-    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-    driver.get("https://opensource-demo.orangehrmlive.com/");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.get("https://opensource-demo.orangehrmlive.com/");
     }
 
     @AfterSuite

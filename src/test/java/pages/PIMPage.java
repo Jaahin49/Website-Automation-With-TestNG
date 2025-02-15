@@ -31,6 +31,5 @@ public class PIMPage {
         infoField.get(6).sendKeys(passWord);
         infoField.get(7).sendKeys(passWord);
 
-
     }
 }

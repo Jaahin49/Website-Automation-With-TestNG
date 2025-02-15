@@ -25,7 +25,8 @@ public class LoginPage {
     List<WebElement> dropdownMenu;
 
     public LoginPage(WebDriver driver) {
-       PageFactory.initElements(driver, this);
+
+        PageFactory.initElements(driver, this);
     }
 
     public void doLogin(String username, String password) {

@@ -1,13 +1,20 @@
 package testrunner;
 
 import com.github.javafaker.Faker;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.PIMPage;
 import setup.Setup;
+import utils.Utils;
+
+import java.io.IOException;
+import java.time.Duration;
 
 public class PIMTestRunner extends Setup {
 
@@ -31,7 +38,7 @@ public class PIMTestRunner extends Setup {
     }
 
     @Test(priority = 2)
-    public void addNewEmployee(){
+    public void addNewEmployee() throws IOException, ParseException {
         pimPage = new PIMPage(driver);
         pimPage.button.get(2).click();
         driver.findElement(By.className("oxd-switch-input")).click();
@@ -42,6 +49,15 @@ public class PIMTestRunner extends Setup {
         String passWord = "p@ssword123";
         pimPage.addNewEmployee(firstName,lastName,userName,passWord);
         pimPage.button.get(1).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+        WebElement headerElment =driver.findElement(By.xpath("//h6[text()=\"Personal Details\"]"));
+
+        String textTitle=headerElment.getText();
+        Assert.assertTrue(textTitle.contains("Personal Details"));
+
+        Utils.saveUser(firstName, lastName, userName, passWord);
 
     }
 }
