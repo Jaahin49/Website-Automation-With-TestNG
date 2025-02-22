@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Suite name="Orange HRM Demo">
+    <test name="admin login">
+        <classes>
+            <class name ="testrunner.LoginTestRunner"></class>
+        </classes>
+
+        <classes>
+            <class name="testrunner.PIMTestRunner"></class>
+        </classes>
+
+    </test>
+
+</Suite>

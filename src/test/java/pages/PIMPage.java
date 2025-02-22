@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import setup.EmployeeModel;
 
 import java.util.List;
 
@@ -23,13 +24,13 @@ public class PIMPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void addNewEmployee(String firstName, String lastName, String userName, String passWord){
+    public void addNewEmployee(EmployeeModel model){
 
-        infoField.get(1).sendKeys(firstName);
-        infoField.get(3).sendKeys(lastName);
-        infoField.get(5).sendKeys(userName);
-        infoField.get(6).sendKeys(passWord);
-        infoField.get(7).sendKeys(passWord);
+        infoField.get(1).sendKeys(model.getFirstName());
+        infoField.get(3).sendKeys(model.getLastName());
+        infoField.get(5).sendKeys(model.getUserName());
+        infoField.get(6).sendKeys(model.getPassWord());
+        infoField.get(7).sendKeys(model.getPassWord());
 
     }
 }

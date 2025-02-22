@@ -3,6 +3,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import setup.EmployeeModel;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,7 +12,7 @@ import java.io.IOException;
 
 public class Utils {
 
-    public static void saveUser(String firstName, String lastName, String userName, String passWord) throws IOException, ParseException {
+    public static void saveUser(EmployeeModel model) throws IOException, ParseException {
 
         String fileLocation = "./src/test/resources/users.json";
 
@@ -21,10 +22,10 @@ public class Utils {
 
         JSONObject empObj = new JSONObject();
 
-        empObj.put("firstName", firstName);
-        empObj.put("lastName", lastName);
-        empObj.put("userName", userName);
-        empObj.put("passWord", passWord);
+        empObj.put("firstName", model.getFirstName());
+        empObj.put("lastName", model.getLastName());
+        empObj.put("userName", model.getUserName());
+        empObj.put("passWord", model.getPassWord());
 
         empArray.add(empObj);
 
@@ -32,12 +33,6 @@ public class Utils {
         writer.write(empArray.toJSONString());
         writer.flush();
         writer.close();
-
-
-
-
-
-
 
     }
 }

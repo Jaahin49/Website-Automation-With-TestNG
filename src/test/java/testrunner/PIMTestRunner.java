@@ -8,8 +8,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.yaml.snakeyaml.emitter.Emitable;
 import pages.LoginPage;
 import pages.PIMPage;
+import setup.EmployeeModel;
 import setup.Setup;
 import utils.Utils;
 
@@ -47,7 +49,17 @@ public class PIMTestRunner extends Setup {
         String lastName = faker.name().lastName();
         String userName = faker.name().username();
         String passWord = "p@ssword123";
-        pimPage.addNewEmployee(firstName,lastName,userName,passWord);
+
+        EmployeeModel model = new EmployeeModel();
+
+        model.setFirstName(firstName);
+        model.setLastName(lastName);
+        model.setUserName(userName);
+        model.setPassWord(passWord);
+
+
+        pimPage.addNewEmployee(model);
+
         pimPage.button.get(1).click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
@@ -57,7 +69,7 @@ public class PIMTestRunner extends Setup {
         String textTitle=headerElment.getText();
         Assert.assertTrue(textTitle.contains("Personal Details"));
 
-        Utils.saveUser(firstName, lastName, userName, passWord);
+        Utils.saveUser(model);
 
     }
 }
