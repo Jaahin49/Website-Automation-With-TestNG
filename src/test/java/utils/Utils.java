@@ -35,4 +35,17 @@ public class Utils {
         writer.close();
 
     }
+
+    public static JSONArray readJSONData() throws IOException, ParseException {
+
+        String fileLocation = "./src/test/resources/users.json";
+        JSONParser parser = new JSONParser();
+        JSONArray empArray = (JSONArray) parser.parse(new FileReader(fileLocation));
+        return empArray;
+    }
+
+    public static void main(String[] args) throws IOException, ParseException {
+
+    }
+
 }

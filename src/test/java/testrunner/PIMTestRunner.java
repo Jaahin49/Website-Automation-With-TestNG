@@ -36,7 +36,6 @@ public class PIMTestRunner extends Setup {
         String actualMessage = driver.findElements(By.className("oxd-text--span")).get(12).getText();
         String expectedMesage = "Records Found";
         Assert.assertTrue(actualMessage.contains(expectedMesage));
-
     }
 
     @Test(priority = 2)
@@ -56,7 +55,6 @@ public class PIMTestRunner extends Setup {
         model.setLastName(lastName);
         model.setUserName(userName);
         model.setPassWord(passWord);
-
 
         pimPage.addNewEmployee(model);
 
